@@ -1,0 +1,828 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap');
+
+/* font-family: 'Jost', sans-serif; */
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+html{font-size: 0.6vw;}
+html,body{font-family: 'Jost', sans-serif;}
+ul,ol,li{list-style: none;}
+a{text-decoration: none;}
+button{border: 0; background: none; border-radius: 0; font-family: inherit; position: relative; display: inline-block;}
+
+.background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(#0a3cce 70%, transparent);
+}
+
+
+#main{
+    position: relative;
+    overflow: hidden;
+    background-color: #0c36c4;}
+
+#page1{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+#page1 .mg-hero-scene{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#page1 video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+#page1 nav{
+    display: flex;
+    z-index: 5;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    height: 10vh;
+    width: 100vw;
+    position: absolute;
+}
+
+#page1 nav .logo {
+    width: 6rem;
+    margin-left: 3rem;
+}
+
+#page1 nav .logo img {
+    width: 100%;
+}
+
+.mg-btn_rounded-text{
+    /* display: inline-flex; */
+    display: block; /* >> 부모가 inline요소라서 글씨가 밖으로 나오는 것을 block적용해서 안보이게 */
+    position: relative;
+    overflow: hidden;
+    transition: 0.6s;
+    transform: scaleX(1);
+}
+.mg-btn_rounded:hover .mg-btn_rounded-text{
+    transform: scaleX(1.05);
+}
+
+.mg-btn_rounded-text-copy{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    color: #0a3cce;
+    transform: translateY(-150%) rotateX(180deg);
+    transition: transform 0.6s, color 0.6s;
+    opacity: 0;
+}
+.mg-btn_rounded:hover .mg-btn_rounded-text-copy{
+    transform: translateY(0%) rotateX(0deg);
+    opacity: 1;
+}
+
+.mg-btn_rounded-text-origin{
+    position: relative;
+    display: block; /* block 적용 이유 : absolute>relative로 바꾸면서 transform 적용안되서 적용하려고  */
+    /* left: 0;
+    width: 100%; */
+    color: #fff;
+    transform: translateY(0) rotateX(0);
+    transition: transform 0.6s, color 0.6s;
+    
+}
+.mg-btn_rounded:hover .mg-btn_rounded-text-origin{
+    transform: translateY(150%) rotateX(180deg);
+    
+}
+
+
+
+/* 삼단메뉴 */
+.mg-btn_menu {
+    width: 6rem;
+    height: 4.5rem;
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 4.8rem;
+    transition: border-color .4s;
+    font-size: 15px;
+    color: #fff;
+}
+
+.mg-btn_menu:hover {
+    border: 1px solid #fff;
+}
+
+#right-nav{
+    display: flex;
+    gap: 20px;
+
+}
+#right-nav .mg-btn_rounded{
+    min-width: 13rem;
+    height: 4.5rem;
+    padding: 0 2.5rem;
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 4.5rem;
+    text-align: center;
+}
+.mg-btn_rounded-stroke{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: 0.6s ease-out; /* ease-out : 마무리를 천천히 */
+}
+
+.mg-btn_rounded:hover .mg-btn_rounded-stroke{
+    border: 1px solid #fff;
+}
+.mg-btn_rounded-fill{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4.5rem;
+    overflow: hidden;
+    border-radius: 4rem;
+}
+.mg-btn_rounded-fill::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: scaleY(0); /* 바닥을기준으로 */
+    transform-origin: bottom center;
+    /* transition: ease 0.6s; */
+    transition: cubic-bezier(0.67, 0, 0.35, 1) 0.6s;
+}
+.mg-btn_rounded:hover .mg-btn_rounded-fill::before{
+    transform: scaleY(1);
+}
+
+
+.bottom-page1{
+    position: absolute;
+    bottom: 5%;
+    width: 50vw;
+    left: 10%;
+    z-index: 5;
+}
+.bottom-page1 h1{
+    font-size: 11rem; /* 12rem */
+    font-weight: 100;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 6rem;
+}
+.bottom-page1 .bottom-page1-inner{
+    display: flex;
+    padding-right: 1rem;
+    width: 100%;
+    padding: 0 0 4rem;
+    font-weight: 300;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: -.02rem;
+    color: #fff;
+    align-items: center;
+}
+.bottom-page1 .bottom-page1-inner h4{
+    font-size: 1.3vw;
+    font-weight: 100;
+    color: #fff;
+    width: 49rem;
+    padding: 0 4rem 0 0;
+}
+.bottom-page1 .bottom-page1-inner button{
+    border-radius: 50px;
+    background-color: #fff;
+    color: #0b48ed;
+    font-size: 16px;
+    padding: 1.5rem 5rem;
+}
+
+/* btn_scroll */
+.btn_scroll{
+    position: absolute;
+    right: 12rem;
+    bottom: 8%;
+    cursor: pointer;
+    z-index: 5;
+}
+.btn_scroll .btn_scroll-text{
+    color: #fff;
+    font-style: normal;
+    font-weight: 350;
+    font-size: 1.8rem;
+    line-height: 100%;
+    text-transform: uppercase;
+}
+.btn_scroll .btn_scroll-icon{
+    display: inline-block;
+    font-size: 1.5rem;
+    color: #fff;
+    animation: scroll-icon-bounce 5s infinite;
+}
+
+@keyframes scroll-icon-bounce {
+    0%,100%,20%,50%,80% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-7px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* page2 */
+#page2{
+    position: relative;
+    z-index: 20;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 0 8vw;
+    
+}
+/* #page2 .background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(#0a3cce 70%, transparent);
+} */
+#page2 h3{
+    position: relative;
+    
+    margin: 0 0 3rem;
+    color: #fff;
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 1.6;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    z-index: 30;
+}
+#page2 h2{
+    position: relative;
+    width: 90%;
+    font-size: 7rem;
+    line-height: 118%;
+    color: #dadada69;
+    font-weight: 300;
+    letter-spacing: -.05em;
+    z-index: 30;
+}
+
+/* page */
+#page3 {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    margin-top: -100vh;
+}
+
+#page3>canvas {
+    max-height: 100vh;
+    max-width: 100vw;
+    position: relative;
+}
+
+/* page4 */
+#page4{
+    z-index: 20;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 0vw 8vw;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#page4 h3{
+    position: relative;
+    margin: 0 0 3rem;
+    color: #fff;
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 1.6;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    z-index: 10; 
+}
+#page4 h2{
+    position: relative;
+    width: 90%;
+    font-size: 7rem;
+    line-height: 118%;
+    color: #dadada69;
+    font-weight: 300;
+    letter-spacing: -.05em;
+    z-index: 10;
+}
+
+/* page5 */
+#page5{
+    height: 100vh;
+    width: 100vw;
+    margin-top: -100vh;
+}
+#page5 canvas{
+
+}
+
+
+
+/* page6 */
+
+#page6 {
+    margin-top: -100vh;
+    z-index: 20;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0vw 8vw;
+    color: #fff;
+}
+
+#page6>h3 {
+    position: relative;
+    margin: 0 0 3rem;
+    color: #fff;
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 1.6;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+#page6>h2 {
+    position: relative;
+    width: 90%;
+    font-size: 7rem;
+    line-height: 118%;
+    color: #dadada69;
+    font-weight: 300;
+    letter-spacing: -.05em;
+    z-index: 10;
+}
+
+
+/* page7 */
+#page7{
+    margin-top: -70vh;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0a3cce;
+    opacity: 0;
+}
+#page7>canvas{
+    position: relative;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+.page7-cir{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.2);
+    
+    z-index: 9;
+    height: 30vw;
+    width: 30vw;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+.page7-cir-inner{
+    height: 70%;
+    width: 70%;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+
+/* page8 */
+
+#page8{
+    margin-top: -100vh;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+#page8 .page8-inner{
+    width: 100%; height: 100%;
+    background-color: #0a3cce;
+}
+#page8 .video>video{
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform: scale(1.5);
+}
+.page8-bottom{
+    z-index: 20;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.page8-bottom>h2{
+    color: #fff;
+    margin-bottom: 2vw;
+    font-size: 5vw;
+    font-weight: 100;
+    overflow: hidden;
+}
+.page8-bottom>h2 span{display: inline-block;}
+.page8-bottom>h2 span:nth-child(6) {
+    width: 40px;
+  }
+.page8-bottom>button{
+    padding: 20px 30px;
+    border-radius: 50px;
+    border: none;
+    background-color: #fff;
+    color: #0a3cce;
+}
+
+
+/* page9 */
+#page9{
+    display: flex;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: #0c36c4; */
+}
+.left9{
+    height: 100%;
+    width: 40%;
+    position: relative;
+    font-family: a;
+}
+.left9>h1{
+    position: absolute;
+    top: 40%;
+    right: 5%;
+    transform: translateY(-50%);
+    font-size: 5vw;
+    font-weight: 100;
+    color: #fff;
+    line-height: 1;
+}
+.right9{
+    height: 100%;
+    width: 60%;
+    position: relative;
+}
+.right9-center{
+    height: 50%;
+    width: 85%;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url(https://thisismagma.com/wp-content/uploads/2023/04/magma.wp2.cubdev.com-home-1.jpeg);
+    background-size: cover;
+    left: 5%;
+}
+
+/* page10 */
+
+#page10{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: #0a3cce; */
+}
+.right10{
+    height: 100%;
+    width: 60%;
+    position: relative;
+    left: 40%;
+}
+.right10-inner{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    height: 33.3%;
+    width: 100%;
+    font-family: a;
+    color: #fff;
+}
+.right10-inner>h1{
+    font-size: 2vw;
+}
+.right10-inner>p{
+    margin-top: 2vw;
+    font-size: 1.3vw;
+    width: 80%;
+}
+
+
+/* #page11 */
+#page11{
+    padding: 0 17rem;
+    padding-top: 15rem;
+    box-sizing: border-box;
+}
+#page11 h2 {
+    position: relative;
+    color: #fff;
+    font-style: normal;
+    font-weight: 320;
+    font-size: 10rem;
+    line-height: 100%;
+    letter-spacing: -.04em;
+}
+.mg-roadmap{
+    display: flex;
+    justify-content: space-between;
+    gap:26rem
+}
+.mg-roadmap-items{
+    padding: 30rem 0;
+}
+.mg-roadmap-item {
+    position: relative;
+    padding: 0 0 15rem 5rem;
+}
+.mg-roadmap-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0.1rem;
+    background: #0a3cce;
+}
+.mg-roadmap-info:before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: -0.5rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    background: #0a3cce;
+    border-radius: 50%;
+}
+.mg-roadmap-count {
+    margin: 0 0 3rem;
+    opacity: .2;
+    color: #fff;
+    font-style: normal;
+    font-weight: 320;
+    font-size: 1.4rem;
+    line-height: 100%;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    transition: opacity .45s;
+}
+.mg-roadmap-title {
+    margin: 0 0 2.4rem;
+    color: #fff;
+    opacity: .2;
+    font-weight: 320;
+    font-size: 6rem;
+    line-height: 120%;
+    letter-spacing: -.02em;
+    transition: opacity .45s;
+}
+
+.mg-roadmap-text {
+    opacity: .2;
+    color: rgba(255,255,255,.8);
+    font-weight: 320;
+    font-size: 1.8rem;
+    line-height: 150%;
+    letter-spacing: -.02em;
+    transition: opacity .45s;
+}
+.mg-roadmap-canvas{
+    display: block;
+    width: 50rem;
+    height: 50rem;
+    margin-top: calc(50vh - 50%);
+}
+.mg-roadmap-right canvas{
+        
+        width: 100%;
+}
+
+/* page12 */
+
+#page12{
+    position: relative;
+    height: 110vh;
+    width: 100vw;
+    background-color: #fff;
+    font-family: a;
+}
+#page12>h2{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    font-size: 4vw;
+    color: #000;
+    font-weight: 100;
+}
+.page12-inner{
+    display: flex;
+    top: 18%;
+    position: relative;
+    margin-bottom: 2vw;
+    height: 24%;
+    width: 100%;
+}
+.left12{
+    position: relative;
+    height: 100%;
+    width: 40%;
+    left: 5%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.left12>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.right12{
+    padding-top: 5vw;
+    color: #000;
+    left: 50%;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+}
+.right12>h4{
+    font-weight: 100;
+}
+.right12>h1{
+    font-size: 2vw;
+}
+
+/* //page13 */
+#page13{
+    padding: 16rem 0;
+    box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #02268e;
+}
+.page13-inner{
+    padding: 0 17rem;
+    color: #fff;
+    text-align: right;
+}
+.page13-inner>h2{
+    font-size: 12rem;
+    font-weight: 300;
+    width: 55.5rem;
+    margin: 0 0 4rem calc(50% + 3rem);
+}
+.page13-inner>p{
+    font-size: 2.4rem;
+    text-align: left;
+    width: 55.5rem;
+    margin: 0 0 14rem calc(50% + 3rem);
+}
+.mg-featured-reel-wrap{
+    position: absolute;
+    right: 0;
+    bottom: 20%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+.mg-featured-reel-wrap .items{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+.mg-featured-reel-item{
+    position: relative;
+    padding: 0 11rem;
+    height: 7rem;
+    flex-shrink: 0;
+    max-height: 70px;
+}
+.mg-featured-reel-item img, .mg-featured-reel-item picture{
+    height: 100%;
+}
+
+/* //page14 */
+#page14{
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+    background-color: #000;
+    color: #fff;
+    
+    padding: 7vw 10vw;
+}
+#page14>h2{
+    font-size: 5vw;
+    line-height: 1;
+    font-weight: 100;
+}
+#page14>button{
+    padding: 18px 30px;
+    border: none;
+    background-color: #0a3cce;
+    color: #fff;
+    border-radius: 50px;
+    margin-top: 2vw;
+}
+
+/* //page15 */
+#page15{
+    position: relative;
+    height: 60vh;
+    width: 100vw;
+    background-color: #000;
+}
+.page15-inner{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vw 5vw;
+    font-family: a;
+    height: 33.3%;
+    width: 100%;
+    color: #fff;
+    border-top: .5px solid #ffffff5c;
+    border-bottom: .5px solid #ffffff48;
+}
+.page15-inner>i{
+    font-weight: 100;
+    font-size: 2.4vw;
+    position: relative;
+    z-index: 9999;
+}
+.page15-inner>h2{
+    font-size: 3vw;
+    font-weight: 100;
+    position: relative;
+    z-index: 9999;
+}
+
+.center15{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #0a3cce;
+    width: 100%;
+    height: 0%;
+    transition: 0.5s;
+}
+.page15-inner:hover .center15{
+    height: 100%; /* 중앙으로 퍼지는 이유 원위치가 중간이라서 */
+}
